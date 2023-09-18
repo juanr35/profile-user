@@ -44,7 +44,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.BASE_URL}/auth/signin`,
+        destination: `${process.env.USER_AUTH_DOMAIN}/auth/signin`,
       }
     };
   }
@@ -55,7 +55,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.BASE_URL}/auth/verify/${session.user._id}`,
+        destination: `${process.env.USER_AUTH_DOMAIN}/auth/verify/${session.user._id}`,
       }
     };
   }
@@ -68,7 +68,7 @@ export async function getServerSideProps(context) {
       return {
         redirect: {
           permanent: false,
-          destination: `${process.env.BASE_URL}/auth/redirect-sign`,
+          destination: `${process.env.USER_AUTH_DOMAIN}/auth/redirect-sign`,
         }
       };
     }
@@ -85,7 +85,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.BASE_URL}/profile/error`,
+        destination: `${process.env.USER_AUTH_DOMAIN}/profile/error`,
       }
     };
   }
@@ -172,7 +172,7 @@ function HomePage({ props }) {
 
       /** Close the session if account has been deleted */
       socket.on("account_deleted", () => {    
-        push({ href: `${process.env.BASE_URL}/auth/redirect-sign` })
+        push({ href: `${process.env.USER_AUTH_DOMAIN}/auth/redirect-sign` })
       });
       
       return () => {
