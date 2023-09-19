@@ -123,7 +123,7 @@ export default function DataForm(props) {
        
     try {
       axios({
-        url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/account`,
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/account`,
         method: "put",
         data: values,
         headers: {

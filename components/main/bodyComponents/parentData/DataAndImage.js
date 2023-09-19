@@ -330,7 +330,7 @@ export default function DataForm(props) {
        
     try {
       axios({
-        url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/account/parents`,
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/account/parents`,
         method: "put",
         data: values,
         headers: {
@@ -351,7 +351,7 @@ export default function DataForm(props) {
       if (values[registry]?.image?.public_id) {
         setBackdrop(true)    
         await axios({
-          url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/files`,
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/files`,
           method: "DELETE",
           data: {
             [`image_${Number(values[registry].registry)+1}`]: values[registry].image 
@@ -370,7 +370,7 @@ export default function DataForm(props) {
           _id: values[registry]._id
         }
         await axios({
-          url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/account/parents`,
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/account/parents`,
           method: "put",
           data: {
             [registry]: dataReset

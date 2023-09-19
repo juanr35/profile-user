@@ -44,7 +44,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.USER_AUTH_DOMAIN}/auth/signin`,
+        destination: `${process.env.NEXT_PUBLIC_USER_AUTH_DOMAIN}/auth/signin`,
       }
     };
   }
@@ -55,7 +55,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.USER_AUTH_DOMAIN}/auth/verify/${session.user._id}`,
+        destination: `${process.env.NEXT_PUBLIC_USER_AUTH_DOMAIN}/auth/verify/${session.user._id}`,
       }
     };
   }
@@ -68,7 +68,7 @@ export async function getServerSideProps(context) {
       return {
         redirect: {
           permanent: false,
-          destination: `${process.env.USER_AUTH_DOMAIN}/auth/redirect-sign`,
+          destination: `${process.env.NEXT_PUBLIC_USER_AUTH_DOMAIN}/auth/redirect-sign`,
         }
       };
     }
@@ -85,7 +85,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         permanent: false,
-        destination: `${process.env.USER_AUTH_DOMAIN}/profile/error`,
+        destination: `${process.env.NEXT_PUBLIC_USER_AUTH_DOMAIN}/profile/error`,
       }
     };
   }
@@ -119,7 +119,7 @@ function HomePage({ props }) {
   useEffect( async () => {  
     if ( !socket ) {
       let { user: { accountId } } = await getSession()
-      socket = io( process.env.BACKEND_URL_RAW, { 
+      socket = io( process.env.NEXT_PUBLIC_BACKEND_URL_RAW, { 
         withCredentials: true,
         autoConnect: false,
         query: { 
@@ -172,7 +172,7 @@ function HomePage({ props }) {
 
       /** Close the session if account has been deleted */
       socket.on("account_deleted", () => {    
-        push({ href: `${process.env.USER_AUTH_DOMAIN}/auth/redirect-sign` })
+        push({ href: `${process.env.NEXT_PUBLIC_USER_AUTH_DOMAIN}/auth/redirect-sign` })
       });
       
       return () => {

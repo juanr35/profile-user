@@ -49,7 +49,7 @@ export default function CardItem(props) {
       setBackdrop(true)    
       try {
         axios({
-          url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/files`,
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/files`,
           method: "DELETE",
           data: {
             [name]: file
@@ -107,7 +107,7 @@ export default function CardItem(props) {
       )
 
       axios({
-        url: `${process.env.BACKEND_URL}/api-user/${session.user._id}/files`,
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api-user/${session.user._id}/files`,
         method: "put",
         data: formData,
         headers: {
